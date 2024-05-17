@@ -65,4 +65,16 @@ export default class HashMap {
     );
     return true;
   }
+
+  // Return the number of stored keys in the HashMap
+  length() {
+    let counter = 0;
+    this.bucketsArray.forEach((bucket) => (counter += bucket.size));
+    return counter;
+  }
+
+  // Remove all entries in the HashMap
+  clear() {
+    this.bucketsArray = [];
+  }
 }

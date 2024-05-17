@@ -16,7 +16,15 @@ myHashMap.set("Key 10", "Key 10 value");
 console.log(myHashMap.get("Key 10"));
 // Check if myHashMap contains "Key 10"
 console.log(myHashMap.has("Key 10"));
+// Print the number of stored keys
+console.log(myHashMap.length());
 // Remove "Key 10"
 console.log(myHashMap.remove("Key 10"));
 // Check if myHashMap contains "Key 10"
 console.log(myHashMap.has("Key 10"));
+// Print the number of stored keys
+console.log(myHashMap.length());
+//Clear myHashMap
+myHashMap.clear();
+// Print the number of stored keys
+console.log(myHashMap.length());
