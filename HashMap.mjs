@@ -99,4 +99,17 @@ export default class HashMap {
     });
     return array;
   }
+
+  // Return an array containing each key, value pair
+  entries() {
+    let array = [];
+    this.bucketsArray.forEach((bucket) => {
+      for (let i = 0; i < bucket.size; i++) {
+        const node = bucket.at(i);
+        const pair = [node.key, node.value];
+        array.push(pair);
+      }
+    });
+    return array;
+  }
 }

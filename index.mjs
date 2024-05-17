@@ -22,6 +22,8 @@ myHashMap.set("Key 2", "Key 2 value");
 console.log(myHashMap.keys());
 // Print an array with the stored values
 console.log(myHashMap.values());
+// Print an array with the stored pairs of key, value
+console.log(myHashMap.entries());
 // Print the number of stored keys
 console.log(myHashMap.length());
 // Remove "Key 10"
