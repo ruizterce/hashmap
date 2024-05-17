@@ -22,20 +22,29 @@ export default class HashMap {
   // Insert a key-value pair in it's HashMap bucket
   set(key, value) {
     const bucketNum = this.hash(key) % this.size;
+    // If bucket is empty create new LinkedList with new headNode
     if (this.bucketsArray[bucketNum] === undefined) {
+      // If we reach loadFactor, grow the bucket array - See comments in grow() function
+      if (this.length() > this.size * this.loadFactor) {
+        this.grow();
+      }
       this.bucketsArray[bucketNum] = new LinkedList(new Node(key, value, null));
       return;
     }
-
+    // If bucket is not empty
+    // If key is already stored, replace the value
     if (this.bucketsArray[bucketNum].contains(key)) {
-      const index = this.bucketsArray[bucketNum].find(key);
-      this.bucketsArray[bucketNum].removeAt(index);
-      this.bucketsArray[bucketNum].insertAt(key, value, index);
-
+      this.bucketsArray[bucketNum].at(
+        this.bucketsArray[bucketNum].find(key)
+      ).value = value;
       return;
     }
+    // Else append a new node the bucket's LinkedList
+    // If we reach loadFactor, grow the bucket array - See comments in grow() function
+    if (this.length() > this.size * this.loadFactor) {
+      this.grow();
+    }
     this.bucketsArray[bucketNum].append(key, value);
-    // TODO handle bucket size growth
   }
 
   // Get the value associated to the given key
@@ -111,5 +120,17 @@ export default class HashMap {
       }
     });
     return array;
+  }
+
+  // Create a new bucketArray with double the size of the current one and move data over
+  // NOTE: JavaScript’s dynamic nature of array allows us to insert and retrieve indexes that are outside our array size range,
+  // so this function is unnecessary. This is an exercise to understand the logic for growth of a hash table.
+  grow() {
+    this.size *= 2;
+    let newBucketsArray = [];
+    this.bucketsArray.forEach((bucket) => {
+      newBucketsArray.push(bucket);
+    });
+    this.bucketsArray = newBucketsArray;
   }
 }
