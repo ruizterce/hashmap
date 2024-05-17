@@ -40,10 +40,8 @@ export default class HashMap {
 
   // Get the value associated to the given key
   get(key) {
+    if (!this.has(key)) return null;
     const bucketNum = this.hash(key) % this.size;
-    if (this.bucketsArray[bucketNum] === undefined) {
-      return null;
-    }
     return this.bucketsArray[bucketNum].at(
       this.bucketsArray[bucketNum].find(key)
     ).value;
