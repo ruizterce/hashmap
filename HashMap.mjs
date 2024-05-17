@@ -77,4 +77,26 @@ export default class HashMap {
   clear() {
     this.bucketsArray = [];
   }
+
+  // Return an array containing all the keys in the HashMap
+  keys() {
+    let array = [];
+    this.bucketsArray.forEach((bucket) => {
+      for (let i = 0; i < bucket.size; i++) {
+        array.push(bucket.at(i).key);
+      }
+    });
+    return array;
+  }
+
+  // Return an array containing all the values in the HashMap
+  values() {
+    let array = [];
+    this.bucketsArray.forEach((bucket) => {
+      for (let i = 0; i < bucket.size; i++) {
+        array.push(bucket.at(i).value);
+      }
+    });
+    return array;
+  }
 }

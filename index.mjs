@@ -16,12 +16,22 @@ myHashMap.set("Key 10", "Key 10 value");
 console.log(myHashMap.get("Key 10"));
 // Check if myHashMap contains "Key 10"
 console.log(myHashMap.has("Key 10"));
+// Save a new key-value pair in the hashmap
+myHashMap.set("Key 2", "Key 2 value");
+// Print an array with the stored keys
+console.log(myHashMap.keys());
+// Print an array with the stored values
+console.log(myHashMap.values());
 // Print the number of stored keys
 console.log(myHashMap.length());
 // Remove "Key 10"
 console.log(myHashMap.remove("Key 10"));
 // Check if myHashMap contains "Key 10"
 console.log(myHashMap.has("Key 10"));
+// Print an array with the stored keys
+console.log(myHashMap.keys());
+// Print an array with the stored values
+console.log(myHashMap.values());
 // Print the number of stored keys
 console.log(myHashMap.length());
 //Clear myHashMap
