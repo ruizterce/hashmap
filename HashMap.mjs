@@ -28,12 +28,10 @@ export default class HashMap {
     }
 
     if (this.bucketsArray[bucketNum].contains(key)) {
-      this.bucketsArray[bucketNum].insertAt(
-        key,
-        value,
-        this.bucketsArray[bucketNum].find(key)
-      );
-      this.bucketsArray[bucketNum].removeAt(key + 1);
+      const index = this.bucketsArray[bucketNum].find(key);
+      this.bucketsArray[bucketNum].removeAt(index);
+      this.bucketsArray[bucketNum].insertAt(key, value, index);
+
       return;
     }
     this.bucketsArray[bucketNum].append(key, value);
