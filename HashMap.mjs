@@ -34,9 +34,10 @@ export default class HashMap {
         this.bucketsArray[bucketNum].find(key)
       );
       this.bucketsArray[bucketNum].removeAt(key + 1);
+      return;
     }
-
-    // TODO handle collisions
+    this.bucketsArray[bucketNum].append(key, value);
+    // TODO handle bucket size growth
   }
 
   // Get the value associated to the given key
@@ -45,6 +46,8 @@ export default class HashMap {
     if (this.bucketsArray[bucketNum] === undefined) {
       return null;
     }
-    return this.bucketsArray[bucketNum].headNode.value;
+    return this.bucketsArray[bucketNum].at(
+      this.bucketsArray[bucketNum].find(key)
+    ).value;
   }
 }
