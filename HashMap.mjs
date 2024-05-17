@@ -50,4 +50,23 @@ export default class HashMap {
       this.bucketsArray[bucketNum].find(key)
     ).value;
   }
+
+  // Return true if a key is in the HashMap, false if not.
+  has(key) {
+    const bucketNum = this.hash(key) % this.size;
+    if (this.bucketsArray[bucketNum] === undefined) {
+      return false;
+    }
+    if (this.bucketsArray[bucketNum].contains(key)) return true;
+    return false;
+  }
+
+  remove(key) {
+    if (!this.has(key)) return false;
+    const bucketNum = this.hash(key) % this.size;
+    this.bucketsArray[bucketNum].removeAt(
+      this.bucketsArray[bucketNum].find(key)
+    );
+    return true;
+  }
 }
